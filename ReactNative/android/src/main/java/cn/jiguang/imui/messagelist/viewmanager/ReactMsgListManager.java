@@ -1,7 +1,7 @@
 package cn.jiguang.imui.messagelist.viewmanager;
 
 
-import android.annotation.SuppressLint;
+import androidx.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

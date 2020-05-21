@@ -18,7 +18,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import androidx.core.content.ContextCompat;
-import android.support.v4.widget.Space;
+import androidx.legacy.widget.Space;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;

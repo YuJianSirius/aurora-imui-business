@@ -1,6 +1,6 @@
 package cn.jiguang.imui.view;
 
-import android.annotation.SuppressLint;
+import androidx.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
