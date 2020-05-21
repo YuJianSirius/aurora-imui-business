@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/aurora_msgitem_send_style">
+
+
+    <cn.jiguang.imui.view.RoundTextView
+        android:id="@+id/aurora_tv_msgitem_date"
+        style="@style/aurora_msgitem_date_style" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="143dp"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/aurora_ib_msgitem_resend"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/aurora_tv_msgitem_message"
+            android:background="@drawable/aurora_send_msg_error"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/aurora_pb_msgitem_sending"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="48dp"
+            android:layout_marginStart="42dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/aurora_tv_msgitem_sender_display_name"
+            style="@style/aurora_msgitem_sender_display_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/aurora_iv_msgitem_avatar"
+            android:layout_toStartOf="@+id/aurora_iv_msgitem_avatar"
+            android:gravity="end"
+            android:textAlignment="textEnd" />
+
+        <RelativeLayout
+            android:layout_width="230dp"
+            android:layout_height="108dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff">
+
+            <ImageView
+                android:id="@+id/aurora_custom_product_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/aurora_custom_product_name"
+                android:layout_width="101dp"
+                android:layout_height="36dp"
+                android:layout_alignTop="@+id/aurora_custom_product_img"
+                android:layout_toEndOf="@+id/aurora_custom_product_img"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/aurora_custom_product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="23dp"
+                android:layout_toEndOf="@+id/aurora_custom_product_img"
+                android:text="TextView"
+                android:textColor="#d72745"
+                android:textSize="18dp" />
+
+
+        </RelativeLayout>
+
+
+        <cn.jiguang.imui.view.RoundImageView
+            android:id="@+id/aurora_iv_msgitem_avatar"
+            style="@style/aurora_msgitem_sender_avatar_style"
+            android:contentDescription="@string/aurora_avatar_desc" />
+
+    </RelativeLayout>
+
+</LinearLayout>
