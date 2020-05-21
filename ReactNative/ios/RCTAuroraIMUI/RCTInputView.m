@@ -9,6 +9,7 @@
 #import "RCTInputView.h"
 #import "RCTAuroraIMUIModule.h"
 
+
 @implementation RCTInputView
 
 - (instancetype)init {
@@ -85,7 +86,7 @@
     [self.imuiIntputView hideFeatureView];// call twice to fix odd bug
     if(self.onSizeChange) {
       BOOL needShow = [self.imuiIntputView isNeedShowBottomView];
-      self.onSizeChange(@{@"height":@(50 + self.inputTextHeight +
+      self.onSizeChange(@{@"height":@(46 + self.inputTextHeight +
                             self.imuiIntputView.inputTextViewPadding.top +
                             self.imuiIntputView.inputTextViewPadding.bottom +
                             (needShow?0:-46)),
@@ -100,7 +101,7 @@
     
     if(self.onSizeChange) {
       BOOL needShow = [self.imuiIntputView isNeedShowBottomView];
-      self.onSizeChange(@{@"height":@(50 + self.inputTextHeight +
+      self.onSizeChange(@{@"height":@(46 + self.inputTextHeight +
                             self.imuiIntputView.inputTextViewPadding.top +
                             self.imuiIntputView.inputTextViewPadding.bottom +
                             (needShow?0:-46)),
@@ -126,7 +127,7 @@
   self.keyBoardHeight  = bottomDistance;
   if(self.onSizeChange) {
     BOOL needShow = [self.imuiIntputView isNeedShowBottomView];
-    self.onSizeChange(@{@"height":@(50 + self.inputTextHeight + self.keyBoardHeight +
+    self.onSizeChange(@{@"height":@(46 + self.inputTextHeight + self.keyBoardHeight +
                           self.imuiIntputView.inputTextViewPadding.top +
                           self.imuiIntputView.inputTextViewPadding.bottom +
                           (needShow?0:-46)),
