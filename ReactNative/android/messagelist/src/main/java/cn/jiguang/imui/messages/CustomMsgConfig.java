@@ -7,7 +7,7 @@ import cn.jiguang.imui.commons.models.IMessage;
  * This class specify custom message's view type, layout resource id, is send outgoing or not
  * and custom message's {@link Class}
  */
-public class  CustomMsgConfig {
+public class CustomMsgConfig {
 
     // View Type should not use 0-12, because we have already used.
     private int mViewType;

@@ -93,12 +93,6 @@ public class RCTMessage implements IMessage {
                 case "video":
                     this.type = MessageType.SEND_VIDEO.ordinal();
                     break;
-                case "product":
-                    this.type = MessageType.SEND_PRODUCT.ordinal();
-                    break;
-                case "order":
-                    this.type = MessageType.SEND_ORDER.ordinal();
-                    break;
                 default:
                     setType(13);
                     this.type = MessageType.SEND_CUSTOM.ordinal();

@@ -52,15 +52,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
     // Custom message
     private final int TYPE_CUSTOM_SEND_MSG = 11;
     private final int TYPE_CUSTOM_RECEIVE_MSG = 12;
-
-    // Product message
-    private final int TYPE_CUSTOM_SEND_PRODUCT = 15;
-    private final int TYPE_CUSTOM_RECEIVE_PRODUCT = 16;
-
-    // order message
-    private final int TYPE_CUSTOM_SEND_ORDER = 17;
-    private final int TYPE_CUSTOM_RECEIVE_ORDER = 18;
-
     private SparseArray<CustomMsgConfig> mCustomMsgList;
 
     private Context mContext;
@@ -156,11 +147,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
             return getHolder(parent, mHolders.mReceiveVideoLayout, mHolders.mReceiveVideoHolder, false);
         case TYPE_EVENT:
             return getHolder(parent, mHolders.mEventLayout, mHolders.mEventMsgHolder, true);
-            case TYPE_CUSTOM_SEND_PRODUCT:
-                return getHolder(parent, mHolders.mProductSendLayout, mHolders.mSendProductHolder, true);
-            case TYPE_CUSTOM_SEND_ORDER:
-                return getHolder(parent, mHolders.mSendOrderLayout, mHolders.mSendOrderHolder, true);
-
         default:
             if (mCustomMsgList != null && mCustomMsgList.size() > 0) {
                 return getHolder(parent, mCustomMsgList.get(viewType).getResourceId(),
@@ -216,12 +202,7 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
                 return TYPE_SEND_LOCATION;
             } else if (message.getType() == IMessage.MessageType.RECEIVE_LOCATION.ordinal()) {
                 return TYPE_RECEIVER_LOCATION;
-            } else if (message.getType() == IMessage.MessageType.SEND_PRODUCT.ordinal()) {
-                return TYPE_CUSTOM_SEND_PRODUCT;
-            } else if (message.getType() == IMessage.MessageType.SEND_ORDER.ordinal()) {
-                return TYPE_CUSTOM_SEND_ORDER;
-            }
-            else {
+            } else {
                 return getCustomType(message);
             }
         }
@@ -725,10 +706,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
         private Class<? extends BaseMessageViewHolder<? extends IMessage>> mCustomSendMsgHolder;
         private Class<? extends BaseMessageViewHolder<? extends IMessage>> mCustomReceiveMsgHolder;
 
-        private Class<? extends BaseMessageViewHolder<? extends IMessage>> mSendProductHolder;
-
-        private Class<? extends BaseMessageViewHolder<? extends IMessage>> mSendOrderHolder;
-
         private Class<? extends BaseMessageViewHolder<? extends IMessage>> mEventMsgHolder;
 
         private int mSendTxtLayout;
@@ -749,10 +726,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
         private int mCustomSendMsgLayout;
         private int mCustomReceiveMsgLayout;
 
-        private int mProductSendLayout;
-
-        private int mSendOrderLayout;
-
         private int mEventLayout;
 
         public HoldersConfig() {
@@ -768,12 +741,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
             mSendVideoHolder = DefaultVideoViewHolder.class;
             mReceiveVideoHolder = DefaultVideoViewHolder.class;
 
-            mSendProductHolder = DefaultProductViewHolder.class;
-
-            mSendOrderHolder = DefaultOrderViewHolder.class;
-
-            mEventMsgHolder = DefaultEventMsgViewHolder.class;
-
             mSendTxtLayout = R.layout.item_send_text;
             mReceiveTxtLayout = R.layout.item_receive_txt;
 
@@ -786,11 +753,8 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
             mSendVideoLayout = R.layout.item_send_video;
             mReceiveVideoLayout = R.layout.item_receive_video;
 
-            mProductSendLayout = R.layout.item_send_product;
-
+            mEventMsgHolder = DefaultEventMsgViewHolder.class;
             mEventLayout = R.layout.item_event_message;
-
-            mSendOrderLayout = R.layout.item_send_order;
         }
 
         /**
@@ -1001,12 +965,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
             this.mEventLayout = layout;
         }
 
-        public void setPro(Class<? extends BaseMessageViewHolder<? extends IMessage>> holder,
-                                          @LayoutRes int layout) {
-            this.mReceiveLocationHolder = holder;
-            this.mReceiveLocationLayout = layout;
-        }
-
     }
 
     private static class DefaultTxtViewHolder extends TxtViewHolder<IMessage> {
@@ -1040,19 +998,6 @@ public class MsgListAdapter<MESSAGE extends IMessage> extends RecyclerView.Adapt
 
     private static class DefaultEventMsgViewHolder extends EventViewHolder<IMessage> {
         public DefaultEventMsgViewHolder(View itemView, boolean isSender) {
-            super(itemView, isSender);
-        }
-    }
-
-
-    private static class DefaultProductViewHolder extends ProductViewHolder<IMessage> {
-        public DefaultProductViewHolder(View itemView, boolean isSender) {
-            super(itemView, isSender);
-        }
-    }
-
-    private static class DefaultOrderViewHolder extends OrderViewHolder<IMessage> {
-        public DefaultOrderViewHolder(View itemView, boolean isSender) {
             super(itemView, isSender);
         }
     }

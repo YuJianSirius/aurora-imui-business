@@ -97,7 +97,6 @@ public class ReactMsgListManager extends ViewGroupManager<PullToRefreshLayout> i
     private static final String ON_MSG_LONG_CLICK_EVENT = "onMsgLongClick";
     private static final String ON_STATUS_VIEW_CLICK_EVENT = "onStatusViewClick";
     private static final String ON_TOUCH_MSG_LIST_EVENT = "onTouchMsgList";
-    private static final String ON_EVEN_CLICK_EVENT = "onEvenClick";
 
     public static final String RCT_APPEND_MESSAGES_ACTION = "cn.jiguang.imui.messagelist.intent.appendMessages";
     public static final String RCT_UPDATE_MESSAGE_ACTION = "cn.jiguang.imui.messagelist.intent.updateMessage";
@@ -289,15 +288,6 @@ public class ReactMsgListManager extends ViewGroupManager<PullToRefreshLayout> i
                 WritableMap event = Arguments.createMap();
                 event.putString("message", message.toString());
                 reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(rootView.getId(), ON_STATUS_VIEW_CLICK_EVENT, event);
-            }
-        });
-
-        mAdapter.setMsgEvenViewClickListener(new MsgListAdapter.OnMsgEvenViewClickListener<RCTMessage>() {
-            @Override
-            public void onEvenViewClick(RCTMessage message) {
-                WritableMap event = Arguments.createMap();
-                event.putString("message", message.toString());
-                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(rootView.getId(), ON_EVEN_CLICK_EVENT, event);
             }
         });
 
@@ -641,7 +631,6 @@ public class ReactMsgListManager extends ViewGroupManager<PullToRefreshLayout> i
                 .put(ON_STATUS_VIEW_CLICK_EVENT, MapBuilder.of("registrationName", ON_STATUS_VIEW_CLICK_EVENT))
                 .put(ON_TOUCH_MSG_LIST_EVENT, MapBuilder.of("registrationName", ON_TOUCH_MSG_LIST_EVENT))
                 .put(ON_PULL_TO_REFRESH_EVENT, MapBuilder.of("registrationName", ON_PULL_TO_REFRESH_EVENT))
-                .put(ON_EVEN_CLICK_EVENT, MapBuilder.of("registrationName", ON_EVEN_CLICK_EVENT))
                 .build();
     }
 

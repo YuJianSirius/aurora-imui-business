@@ -1,4 +1,4 @@
-package cn.jiguang.imui.messagelist.chatinput.src.test.java.imui.jiguang.cn.imuikit;
+package imui.jiguang.cn.imuikit;
 
 import org.junit.Test;
 

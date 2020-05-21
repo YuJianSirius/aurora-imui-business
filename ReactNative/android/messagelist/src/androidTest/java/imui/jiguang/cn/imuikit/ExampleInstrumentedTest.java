@@ -1,4 +1,4 @@
-package cn.jiguang.imui.messagelist.messagelist.src.androidTest.java.imui.jiguang.cn.imuikit;
+package imui.jiguang.cn.imuikit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

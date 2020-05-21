@@ -47,11 +47,7 @@ public interface IMessage {
         RECEIVE_FILE,
 
         SEND_CUSTOM,
-        RECEIVE_CUSTOM,
-
-        SEND_PRODUCT,
-
-        SEND_ORDER,
+        RECEIVE_CUSTOM;
 
         MessageType() {
         }
