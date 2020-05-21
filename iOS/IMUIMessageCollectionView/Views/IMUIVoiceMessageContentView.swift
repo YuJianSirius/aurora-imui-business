@@ -10,8 +10,8 @@ import UIKit
 import AVFoundation
 
 public class IMUIVoiceMessageContentView: UIView, IMUIMessageContentViewProtocol {
-  open static var outGoingVoiceDurationColor = UIColor(netHex: 0x7587A8)
-  open static var inComingVoiceDurationColor = UIColor(netHex: 0xFFFFFF)
+  public static var outGoingVoiceDurationColor = UIColor(netHex: 0x7587A8)
+  public static var inComingVoiceDurationColor = UIColor(netHex: 0xFFFFFF)
   
   var voiceImg = UIImageView()
   fileprivate var isMediaActivity = false
@@ -61,14 +61,9 @@ public class IMUIVoiceMessageContentView: UIView, IMUIMessageContentViewProtocol
       IMUIAudioPlayerHelper.sharedInstance.stopAudio()
       self.resetVoiceImage()
     } else {
-        var url : URL
-        if (message?.webImageUrl!() == "") {
-            url = URL(fileURLWithPath: (message?.mediaFilePath())!)
-        } else {
-            url = URL(string: (message?.webImageUrl!())!)!
-        }
+      
       do {
-        let voiceData = try Data(contentsOf: url)
+        let voiceData = try Data(contentsOf: URL(fileURLWithPath: (message?.mediaFilePath())!))
         IMUIAudioPlayerHelper
           .sharedInstance
           .playAudioWithData((self.message?.msgId)!,voiceData,

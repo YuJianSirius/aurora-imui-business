@@ -95,7 +95,7 @@ class IMUICameraView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     let bundle = Bundle.imuiInputViewBundle()
-    view = bundle.loadNibNamed("IMUICameraView", owner: self, options: nil)?.first as! UIView
+    view = bundle.loadNibNamed("IMUICameraView", owner: self, options: nil)?.first as? UIView
     
     self.addSubview(view)
     view.frame = self.bounds
@@ -105,7 +105,7 @@ class IMUICameraView: UIView {
     super.init(coder: aDecoder)
 
     let bundle = Bundle.imuiInputViewBundle()
-    view = bundle.loadNibNamed("IMUICameraView", owner: self, options: nil)?.first as! UIView
+    view = bundle.loadNibNamed("IMUICameraView", owner: self, options: nil)?.first as? UIView
     
     self.addSubview(view)
     view.frame = self.bounds
@@ -410,6 +410,7 @@ class IMUICameraView: UIView {
   // -MARK: Click Event
   @IBAction func clickCameraSwitch(_ sender: Any) {
     if isPhotoMode {
+      
       if #available(iOS 10.0, *) {
         self.capturePhotoAfter_iOS10()
       } else {
@@ -528,8 +529,7 @@ class IMUICameraView: UIView {
       }
       
       let photoSettings = AVCapturePhotoSettings()
-      photoSettings.flashMode = .auto
-      
+      photoSettings.flashMode = .auto  
       photoSettings.isHighResolutionPhotoEnabled = false
       
       if photoSettings.availablePreviewPhotoPixelFormatTypes.count > 0 {
@@ -580,6 +580,7 @@ class IMUICameraView: UIView {
         }
       )
       
+
   self.inProgressPhotoCaptureDelegates[photoCaptureDelegate.requestedPhotoSettings.uniqueID] = photoCaptureDelegate
 
       switch self.currentCameraDeviceType {
@@ -591,9 +592,7 @@ class IMUICameraView: UIView {
       default:
         break
       }
-      if #available(iOS 10.0, *) {
-          photoSettings.flashMode = .off
-      }
+      photoSettings.flashMode = self.videoDeviceInput.device.isFlashAvailable ? .auto : .off
 
       self.photoOutput?.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
     }

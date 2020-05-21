@@ -259,6 +259,7 @@ open class IMUIInputView: IMUICustomInputView {
   }
   
   fileprivate func switchToFeature(type: IMUIFeatureType, button: UIButton) {
+    self.featureView.layoutFeature(with: type)
     switch type {
     case .voice:
       self.delegate?.switchToMicrophoneMode?(recordVoiceBtn: button)
@@ -315,13 +316,8 @@ extension IMUIInputView: IMUICustomInputViewDataSource {
     let cell = inputBarItemListView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! IMUIFeatureListIconCell
     cell.layout(with: dataArr[indexPath.item],onClickCallback: { cell in
       if cell.featureData!.featureType != .none {
-        // mark - disable the camera reaction 
         self.currentType = cell.featureData!.featureType
         self.switchToFeature(type: self.currentType, button: cell.featureIconBtn)
-
-        if (cell.featureData!.featureType == .camera) {
-            return
-        }
         self.showFeatureView()
         self.reloadFeaturnView()
       }
