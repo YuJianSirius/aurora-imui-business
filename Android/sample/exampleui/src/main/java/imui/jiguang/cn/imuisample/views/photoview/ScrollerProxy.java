@@ -15,7 +15,7 @@
  *******************************************************************************/
 package imui.jiguang.cn.imuisample.views.photoview;
 
-import android.annotation.TargetApi;
+import androidx.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;

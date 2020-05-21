@@ -16,7 +16,7 @@ package imui.jiguang.cn.imuisample.views.photoview;
  * limitations under the License.
  *******************************************************************************/
 
-import android.annotation.TargetApi;
+import androidx.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.view.MotionEvent;
